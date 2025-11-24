@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Business | Stop Overpaying for Marketing</title>
+    <meta name="description" content="The training guide for small business owners to slash costs and create agency-quality marketing content using AI.">
+    
+    <style>
+        /* --- CSS RESET & BASIC SETUP --- */
+        :root {
+            --bg-dark: #1E1E1E;
+            --bg-light: #2C2C2C;
+            --text-primary: #F5F5F5;
+            --text-secondary: #A0A0A0;
+            --accent-primary: #F39C12; /* Vibrant Orange for CTAs */
+            --accent-secondary: #4A90E2; /* Brand Blue for headings & accents */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- UTILITY & LAYOUT CLASSES --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .text-center { text-align: center; }
+        .accent-text { color: var(--accent-primary); }
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--accent-secondary); /* Applied blue to section headings */
+        }
+        .section-subheading {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease-out, background-color 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+        }
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.2);
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .btn-primary:hover {
+            background-color: #ffae19;
+        }
+        
+        /* --- HEADER --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            font-weight: 600;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--accent-secondary); /* Applied blue to logo */
+        }
+        .logo strong {
+            font-weight: 800;
+        }
+
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero-headline {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-primary); /* Hero headline remains white for max contrast */
+        }
+        .hero-subheadline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .hero-cta-button {
+            padding: 18px 36px;
+            font-size: 1.2rem;
+        }
+        .hero-credibility {
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- BENEFITS SECTION --- */
+        .benefits-grid {
+            display: grid;
+            gap: 40px;
+        }
+        .benefit-card {
+            background-color: var(--bg-light);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid #3c3c3c;
+        }
+        .benefit-icon {
+            display: inline-block;
+            margin-bottom: 20px;
+            background-color: rgba(74, 144, 226, 0.1); /* Blue background */
+            padding: 12px;
+            border-radius: 8px;
+        }
+        .benefit-icon svg {
+            stroke: var(--accent-secondary); /* Blue icon stroke */
+            width: 32px;
+            height: 32px;
+        }
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        .benefit-card p {
+            color: var(--text-secondary);
+        }
+
+        /* --- SOCIAL PROOF SECTION --- */
+        .testimonial-grid { display: grid; gap: 30px; }
+        .testimonial-card {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #3c3c3c;
+        }
+        .testimonial-quote {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .testimonial-author span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- PROCESS SECTION --- */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-light);
+            border: 1px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+        }
+        .step-content h3 { font-size: 1.5rem; margin-bottom: 5px; }
+        .step-content p { color: var(--text-secondary); }
+
+        /* --- RISK REVERSAL --- */
+        .guarantee {
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid var(--accent-secondary); /* Blue border */
+        }
+        .guarantee-icon svg { width: 60px; height: 60px; color: var(--accent-secondary); margin-bottom: 20px; } /* Blue icon */
+        .guarantee h2 { font-size: 2.2rem; margin-bottom: 15px; color: var(--text-primary); }
+        .guarantee p { max-width: 600px; margin: 0 auto; color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* --- FINAL CTA --- */
+        .final-cta { text-align: center; }
+        
+        /* --- FOOTER --- */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #3c3c3c;
+        }
+        .footer p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* --- ANIMATIONS --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- MEDIA QUERIES (TABLET & UP) --- */
+        @media (min-width: 768px) {
+            .section-heading { font-size: 3rem; }
+            .hero-headline { font-size: 3.8rem; }
+            .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+            .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-steps { flex-direction: row; }
+        }
+
+        /* --- MEDIA QUERIES (DESKTOP & UP) --- */
+        @media (min-width: 1024px) {
+            .section-heading { font-size: 3.2rem; }
+            .hero-headline { font-size: 4.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header container">
+        <a href="#" class="logo"><strong>AI</strong> for <strong>Business</strong></a>
+        <a href="#cta" class="btn btn-primary">Get The Guide</a>
+    </header>
+
+    <main>
+
+        <section class="hero container">
+            <h1 class="hero-headline fade-in">
+                Get Agency-Level Marketing Output... <br>Without The Agency Price Tag.
+            </h1>
+            <p class="hero-subheadline fade-in" style="transition-delay: 100ms;">
+                The definitive training guide for Small & Medium Business Owners to create stunning visuals, persuasive copy, and engaging videos using AI. Stop overpaying and start out-creating your competition.
+            </p>
+            <a href="#cta" class="btn btn-primary hero-cta-button fade-in" style="transition-delay: 200ms;">Get Instant Access Now</a>
+            <p class="hero-credibility fade-in" style="transition-delay: 300ms;">
+                Join over 500+ business owners transforming their workflow.
+            </p>
+        </section>
+
+        <section class="section container">
+            <div class="text-center">
+                <h2 class="section-heading fade-in">Stop Trading Time & Money For Slow Growth</h2>
+                <p class="section-subheading fade-in">Your business has three core resources: time, money, and energy. Current solutions drain all three. This guide gives them back to you, multiplied.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <h3>Slash Your Expenses</h3>
+                    <p>Stop paying for expensive freelancers, agencies, and a dozen different software tools. This guide shows you how to consolidate your entire content creation process using powerful, low-cost AI, saving you thousands per month.</p>
+                </div>
+                <div class="benefit-card fade-in" style="transition-delay: 150ms;">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3>Reclaim 10+ Hours A Week</h3>
+                    <p>What if you could automate 80% of your content creation? From writing blog posts and social media updates to scripting videos, you'll learn systems that work for you, so you can focus on running your business, not just working in it.</p>
+                </div>
+                <div class="benefit-card fade-in" style="transition-delay: 300ms;">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"></path><path d="M12 22V9"></path><path d="m3.29 9 8.71 13 8.71-13"></path></svg>
+                    </div>
+                    <h3>Look Like A Market Leader</h3>
+                    <p>Your business deserves to look as good as the biggest brands. Learn to generate high-end visuals, professional videos, and compelling copy that builds instant trust and authority, allowing you to attract better clients and charge premium prices.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" style="background-color: var(--bg-light); border-radius: 16px;">
+            <div class="text-center">
+                <h2 class="section-heading fade-in">Proof This Isn't Just Theory</h2>
+                <p class="section-subheading fade-in">These are real business owners who stopped struggling and started leveraging.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-quote">"We cut our marketing content budget by 75% in the first month alone. Our output has doubled and the quality is better than what we were paying an agency $5,000/mo for. A complete game-changer."</p>
+                    <p class="testimonial-author">Sarah L.<span>Owner, E-commerce Brand</span></p>
+                </div>
+                <div class="testimonial-card fade-in" style="transition-delay: 150ms;">
+                    <p class="testimonial-quote">"As a solo founder, I do everything myself. This guide saved me. I'm no longer spending weekends trying to write blog posts. I've automated my entire content calendar and leads are up 40%."</p>
+                    <p class="testimonial-author">Mark R.<span>Founder, SaaS Startup</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container">
+            <div class="text-center">
+                <h2 class="section-heading fade-in">Your 3-Step Path To Autonomous Growth</h2>
+                <p class="section-subheading fade-in">You don't need a computer science degree. You just need a proven system.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step fade-in">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Get The Guide</h3>
+                        <p>Get instant access to the complete training, including step-by-step videos, prompt libraries, and tool recommendations.</p>
+                    </div>
+                </div>
+                <div class="step fade-in" style="transition-delay: 150ms;">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Implement The AI Systems</h3>
+                        <p>Follow our clear instructions to set up your new, automated workflow in a single afternoon. No guesswork involved.</p>
+                    </div>
+                </div>
+                <div class="step fade-in" style="transition-delay: 300ms;">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Scale Your Business</h3>
+                        <p>With your costs down and your marketing output on autopilot, focus your newfound time and capital on the things that actually grow your business.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container">
+             <div class="guarantee fade-in">
+                <div class="guarantee-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                </div>
+                <h2>The "Double Your Investment" Guarantee</h2>
+                <p>We are so confident this guide will transform your business that we offer an insane guarantee. If you implement the systems and don't save or generate at least 2x the cost of this guide within your first 60 days, we'll refund 100% of your money. No questions asked. You have nothing to lose and an entire automated business to gain.</p>
+            </div>
+        </section>
+
+
+        <section id="cta" class="section container final-cta">
+            <h2 class="section-heading fade-in">Stop Being An Employee In Your Own Business</h2>
+            <p class="section-subheading fade-in">
+                The choice is simple: continue to overpay and underproduce, or leverage the most powerful technology available and get your time and money back. Your competitors are already making the switch.
+            </p>
+            <a href="#" class="btn btn-primary hero-cta-button fade-in">
+                Get The Guide & Start Automating Today
+            </a>
+            </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AI for Business. All Rights Reserved.</p>
+            <p>Empowering small businesses with the leverage they deserve.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- LAZY-FADE ANIMATIONS ON SCROLL ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const animatedElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: unobserve after animation
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
